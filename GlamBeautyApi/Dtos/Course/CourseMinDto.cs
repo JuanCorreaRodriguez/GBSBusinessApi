@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GlamBeautyApi.Util;
 
 namespace GlamBeautyApi.Dtos.Course;
 
@@ -20,4 +21,8 @@ public class CourseMinDto
 
     [Required(ErrorMessage = "Course end_at is required")]
     public DateTime EndAt { get; set; } = DateTime.UtcNow;
+
+    public string Availability { get; set; } = CourseAvailabilityEnum.ComingSoon.ToString();
+
+    public string Status { get; set; } = CourseStatusEnum.Open.ToString();
 }

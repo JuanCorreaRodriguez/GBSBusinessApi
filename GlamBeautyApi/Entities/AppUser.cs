@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlamBeautyApi.Entities;
 
 [Table("AspNetUsers")]
+[Index(nameof(Id), IsUnique = true)]
 public class AppUser : IdentityUser
 {
     [MaxLength(200)] [Column("user_desc")] public string UserDesc { get; set; } = string.Empty;

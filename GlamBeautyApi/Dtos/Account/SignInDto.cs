@@ -4,7 +4,7 @@ namespace GlamBeautyApi.Dtos.Account;
 
 public class SignInDto
 {
-    [Required] public string Username { get; set; }
+    [Required] [MaxLength(50)] public required string Username { get; set; }
 
-    [Required] public string Password { get; set; }
+    [Required] [MinLength(8)] public required string Password { get; set; }
 }

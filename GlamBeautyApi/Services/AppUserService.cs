@@ -5,11 +5,11 @@ using GlamBeautyApi.Mappers;
 
 namespace GlamBeautyApi.Services;
 
-public class AppAppUserService : IAppUserService
+public class AppUserService : IAppUserService
 {
     private readonly IAppUserRepository _appUserRepository;
 
-    public AppAppUserService(IAppUserRepository appUserRepository)
+    public AppUserService(IAppUserRepository appUserRepository)
     {
         _appUserRepository = appUserRepository;
     }

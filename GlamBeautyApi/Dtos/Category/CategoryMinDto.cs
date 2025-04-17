@@ -1,10 +1,14 @@
-﻿namespace GlamBeautyApi.Dtos.Category;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GlamBeautyApi.Dtos.Category;
 
 public class CategoryMinDto
 {
-    public Guid CategoryId { get; set; }
+    [MaxLength(50)] public Guid CategoryId { get; set; }
 
-    public required string CategoryName { get; set; }
+    [MaxLength(50)] public required string Name { get; set; }
 
-    public string CategoryDesc { get; set; } = string.Empty;
+    [MaxLength(1000)] public string Desc { get; set; } = string.Empty;
+
+    [MaxLength(200)] public string Type { get; set; } = string.Empty;
 }

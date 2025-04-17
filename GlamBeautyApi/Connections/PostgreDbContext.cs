@@ -13,11 +13,14 @@ public class PostgreDbContext : IdentityDbContext<AppUser>
         AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
     }
 
-    // public DbSet<User> Users { get; set; }
     public DbSet<AppUser> AppUsers { get; set; }
     public DbSet<Course> Courses { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Media> Media { get; set; }
+    public DbSet<Brand> Brand { get; set; }
+
     public DbSet<UserCourse> UserCourses { get; set; }
+    public DbSet<BrandMedia> BrandMedia { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -46,6 +49,12 @@ public class PostgreDbContext : IdentityDbContext<AppUser>
 
         builder.Entity<IdentityRole>().HasData(roles);
 
+        builder.Entity<Category>()
+            .HasOne(e => e.Parent)
+            .WithMany(e => e.SubCategories)
+            .HasForeignKey(e => e.ParentId)
+            .IsRequired(false);
+
         // Ignore actual entities // Used for migration at creation Jwt AppUser: removed after AspNet tables
         // builder.Ignore<BusinessModel>();
         // builder.Ignore<Category>();
@@ -71,6 +80,14 @@ public class PostgreDbContext : IdentityDbContext<AppUser>
                 r => r.HasOne<Course>().WithMany().HasForeignKey(e => e.CourseId)
             );
 
+        builder.Entity<Brand>()
+            .HasMany(e => e.Media)
+            .WithMany(e => e.Brand)
+            .UsingEntity<BrandMedia>(
+                l => l.HasOne<Media>().WithMany().HasForeignKey(e => e.MediaId),
+                r => r.HasOne<Brand>().WithMany().HasForeignKey(e => e.BrandId)
+            );
+
         // builder.Entity<UserCourse>()
         //     .HasOne(o => o.AppUser)
         //     .WithMany(o => o.UserCourses)
@@ -82,3 +99,6 @@ public class PostgreDbContext : IdentityDbContext<AppUser>
         //     .HasForeignKey(o => o.CourseId);
     }
 }
+
+// eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlckBjb2RlbGlzdHVkaW8uY29tIiwiZ2l2ZW5fbmFtZSI6IkNvZGVsaSIsIm5iZiI6MTc0NDY2NDQ1NSwiZXhwIjoxNzQ1MjY5MjU1LCJpYXQiOjE3NDQ2NjQ0NTUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMTMiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MjEzIn0.oBV1Ok62cIorZ4kKuWpEywUwM5Df5-l3eCg36EGHq1a_7lEgSI2TtyIQR_OXNWT9ItYdtFbE9pOgo3iQC1KtxQ
+// eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlckBjb2RlbGlzdHVkaW8uY29tIiwiZ2l2ZW5fbmFtZSI6IkNvZGVsaSIsIm5iZiI6MTc0NDY2NDU2MiwiZXhwIjoxNzQ1MjY5MzYyLCJpYXQiOjE3NDQ2NjQ1NjIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMTMiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MjEzIn0.i838LmeK_1lvy5QMBQW-m1ICi7GjiCwDFfCw2cSNqs_H0Rh-CtKNz4_rEUtlax5FJYFhng8GjF3Ff3y4xt5CpA

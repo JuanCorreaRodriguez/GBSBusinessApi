@@ -18,9 +18,9 @@ public static class CourseMapper
             CreateAt = course.CreateAt,
             CourseDesc = course.CourseDesc,
             EndAt = course.EndAt,
-            StartAt = course.StartAt
-            // Category = course.Category,
-            // AppUsers = AppUsersToDto(course.AppUser)
+            StartAt = course.StartAt,
+            Availability = course.Availability,
+            Status = course.Status
         };
     }
 
@@ -48,12 +48,16 @@ public static class CourseMapper
             EndAt = courseDto.EndAt,
             StartAt = courseDto.StartAt,
             Capacity = courseDto.Capacity,
-            CourseName = courseDto.CourseName
+            CourseName = courseDto.CourseName,
+            Availability = courseDto.Availability,
+            Status = courseDto.Status
             // Users = courseDto.Users.Select(v => v.DtoToModel()).ToList()
         };
     }
 
-    public static Course CreateDtoToModel(this CourseCreateDto courseDto, string categoryId)
+    public static Course CreateDtoToModel(
+        this CourseCreateDto courseDto, string categoryId, List<AppUser> appUsers
+    )
     {
         return new Course
         {
@@ -65,7 +69,10 @@ public static class CourseMapper
             StartAt = courseDto.StartAt,
             Capacity = courseDto.Capacity,
             CourseName = courseDto.CourseName,
-            CategoryId = Guid.Parse(categoryId)
+            CategoryId = Guid.Parse(categoryId),
+            AppUser = appUsers,
+            Availability = courseDto.Availability,
+            Status = courseDto.Status
             // Users = courseDto.Users.Select(v => v.DtoToModel()).ToList()
         };
     }

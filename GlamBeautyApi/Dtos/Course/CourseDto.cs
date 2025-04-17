@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GlamBeautyApi.Dtos.AppUser;
 using GlamBeautyApi.Dtos.Category;
+using GlamBeautyApi.Util;
 
 namespace GlamBeautyApi.Dtos.Course;
 
@@ -29,7 +30,7 @@ public class CourseDto
     [Required(ErrorMessage = "Course end_at is required")]
     public DateTime EndAt { get; set; } = DateTime.UtcNow;
 
-    public string Ranking { get; set; } = string.Empty;
+    [MaxLength(50)] public string Ranking { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Course price is required")]
     [Range(1, 100000, ErrorMessage = "Course price must be between 1 and 1000.")]
@@ -42,4 +43,8 @@ public class CourseDto
     public CategoryMinDto Category { get; set; }
 
     public List<AppUserCourseMinDto> AppUsers { get; set; } = [];
+
+    public string Availability { get; set; } = CourseAvailabilityEnum.ComingSoon.ToString();
+
+    public string Status { get; set; } = CourseStatusEnum.Open.ToString();
 }

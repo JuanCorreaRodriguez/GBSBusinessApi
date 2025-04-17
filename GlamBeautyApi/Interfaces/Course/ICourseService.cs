@@ -1,4 +1,5 @@
 ﻿using GlamBeautyApi.Dtos.Course;
+using GlamBeautyApi.Entities;
 using GlamBeautyApi.Util;
 
 namespace GlamBeautyApi.Interfaces.Course;
@@ -11,4 +12,5 @@ public interface ICourseService
     Task<bool> CategoryExists(string id);
     Task<CourseDto?> UpdateCourse(string id, CourseUpdateDto course);
     Task<string?> DeleteAsync(string id);
+    Task<List<AppUser>> GetUsersFromList(List<CourseAppUserIds> users);
 }

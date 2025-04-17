@@ -2,8 +2,10 @@ using System.Text;
 using GlamBeautyApi.Connections;
 using GlamBeautyApi.Entities;
 using GlamBeautyApi.Interfaces.Auth;
+using GlamBeautyApi.Interfaces.Brand;
 using GlamBeautyApi.Interfaces.Category;
 using GlamBeautyApi.Interfaces.Course;
+using GlamBeautyApi.Interfaces.Media;
 using GlamBeautyApi.Interfaces.User;
 using GlamBeautyApi.Repository;
 using GlamBeautyApi.Services;
@@ -61,12 +63,16 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+builder.Services.AddScoped<IMediaRepository, MediaRepository>();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 
-builder.Services.AddScoped<IAppUserService, AppAppUserService>();
+builder.Services.AddScoped<IAppUserService, AppUserService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IMediaService, MediaService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -147,5 +153,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-// eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvZGVsaUBjb2RlbGlzdHVkaW8uY29tIiwiZ2l2ZW5fbmFtZSI6ImNvZGVsaXN0dWRpbzEiLCJuYmYiOjE3NDQwMDc3MTMsImV4cCI6MTc0NDYxMjUxMywiaWF0IjoxNzQ0MDA3NzEzLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MjEzIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIxMyJ9.NrU299tpKDB_2Q9F1VvkmFN0iKf3MuLK6ay9o8Q857yYyrKFK6FAHxYD1Zl8NPl5QnMJdsLrTTtJTkUquflc7A

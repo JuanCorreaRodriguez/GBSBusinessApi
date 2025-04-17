@@ -35,9 +35,9 @@ public class CourseRepository : ICourseRepository
                 Capacity = course.Capacity,
                 Category = new CategoryMinDto
                 {
-                    CategoryName = course.Category.CategoryName,
+                    Name = course.Category.CategoryName,
                     CategoryId = course.Category.CategoryId,
-                    CategoryDesc = course.Category.CategoryDesc
+                    Desc = course.Category.CategoryDesc
                 },
                 AppUsers = course.AppUser.Select(o => new AppUserCourseMinDto
                 {
@@ -54,7 +54,7 @@ public class CourseRepository : ICourseRepository
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(query.Category))
-            courses = courses.Where(o => o.Category.CategoryName.Contains(query.Category));
+            courses = courses.Where(o => o.Category.Name.Contains(query.Category));
 
         if (!string.IsNullOrWhiteSpace(query.Price.ToString()))
             courses = courses.Where(o => o.Price >= query.Price);
@@ -66,8 +66,6 @@ public class CourseRepository : ICourseRepository
                     : courses.OrderBy(o => o.CourseName);
 
         var skipNumber = (query.PageNumber - 1) * query.PageSize;
-        var e = await courses.Skip(skipNumber).Take(query.PageSize).ToListAsync();
-        Console.WriteLine($"Total Courses: {e.Count()}");
         return await courses.Skip(skipNumber).Take(query.PageSize).ToListAsync();
     }
 
@@ -87,9 +85,9 @@ public class CourseRepository : ICourseRepository
                 Capacity = course.Capacity,
                 Category = new CategoryMinDto
                 {
-                    CategoryName = course.Category.CategoryName,
+                    Name = course.Category.CategoryName,
                     CategoryId = course.Category.CategoryId,
-                    CategoryDesc = course.Category.CategoryDesc
+                    Desc = course.Category.CategoryDesc
                 },
                 AppUsers = course.AppUser.Select(o => new AppUserCourseMinDto
                 {
@@ -106,6 +104,11 @@ public class CourseRepository : ICourseRepository
         return course;
     }
 
+    public async Task<Course?> GetEntityCourseAsync(string id)
+    {
+        return await _context.Courses.FirstAsync(o => o.CourseId == Guid.Parse(id));
+    }
+
     public Task<bool> ExistCourseAsync(string id)
     {
         return _context.Courses.AnyAsync(o => o.CourseId == Guid.Parse(id));
@@ -116,18 +119,16 @@ public class CourseRepository : ICourseRepository
         return await _context.Courses.ToListAsync();
     }
 
-    public async Task<Course> PostCourseAsync(string categoryId, CourseCreateDto course)
+    public async Task<Course> PostCourseAsync(string categoryId, CourseCreateDto course, List<AppUser> appUsers)
     {
-        var c = await _context.Courses.AddAsync(course.CreateDtoToModel(categoryId));
+        var c = await _context.Courses.AddAsync(course.CreateDtoToModel(categoryId, appUsers));
         await _context.SaveChangesAsync();
         return c.Entity;
     }
 
-    public async Task<Course?> PutCourseAsync(string id, CourseUpdateDto dto)
+    public async Task<Course?> PutCourseAsync(string id, CourseUpdateDto dto, List<AppUser> appUsers)
     {
-        var _course = await GetCourseAsync(id);
-        var course = _course.DtoToModel();
-
+        var course = await GetEntityCourseAsync(id);
         if (course == null) return null;
 
         if (!string.IsNullOrEmpty(dto.CourseName)) course.CourseName = dto.CourseName;
@@ -138,6 +139,9 @@ public class CourseRepository : ICourseRepository
         if (dto.StartAt != null) course.StartAt = (DateTime)dto.StartAt;
         if (dto.EndAt != null) course.EndAt = (DateTime)dto.EndAt;
         if (dto.Category != null) course.CategoryId = (Guid)dto.Category;
+        if (appUsers.Count > 0)
+            foreach (var appUser in appUsers)
+                course.AppUser.Add(appUser);
 
         await _context.SaveChangesAsync();
         return course;

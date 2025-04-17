@@ -2,7 +2,7 @@
 
 public class AuthNewUser
 {
-    public string username { get; set; }
-    public string email { get; set; }
-    public string token { get; set; }
+    public required string Username { get; set; }
+    public required string Email { get; set; }
+    public required string Token { get; set; }
 }

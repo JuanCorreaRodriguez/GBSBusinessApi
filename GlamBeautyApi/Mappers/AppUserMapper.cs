@@ -34,22 +34,6 @@ public static class AppUserMapper
                 CourseName = course.CourseName
             });
         return coursesDto;
-
-        var coursesDto2 = courses.Select(course => new CourseDto
-        {
-            Capacity = course.Capacity,
-            CreateAt = course.CreateAt,
-            Ranking = course.Ranking,
-            // Category = course.Category,
-            StartAt = course.StartAt,
-            EndAt = course.EndAt,
-            Price = course.Price,
-            CourseDesc = course.CourseDesc,
-            CourseId = course.CourseId,
-            CourseName = course.CourseName
-        }).ToList();
-
-        return coursesDto;
     }
 
     public static AppUser DtoToModel(this AppUserDto dto)

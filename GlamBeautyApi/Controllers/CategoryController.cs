@@ -17,6 +17,19 @@ public class CategoryController : ControllerBase
     }
 
     [HttpGet]
+    [Route("all")]
+    [Authorize]
+    public async Task<IActionResult> GetAll()
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var res = await _categoryService.GetAll();
+        return Ok(res);
+    }
+
+    [HttpGet]
+    [Route("categories")]
     [Authorize]
     public async Task<IActionResult> GetCategories()
     {
@@ -24,6 +37,18 @@ public class CategoryController : ControllerBase
             return BadRequest(ModelState);
 
         var res = await _categoryService.GetCategories();
+        return Ok(res);
+    }
+
+    [HttpGet]
+    [Route("subcategories")]
+    [Authorize]
+    public async Task<IActionResult> GetSubcategories()
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var res = await _categoryService.GetSubCategories();
         return Ok(res);
     }
 

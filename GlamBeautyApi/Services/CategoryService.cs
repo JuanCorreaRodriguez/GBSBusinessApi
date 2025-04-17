@@ -13,17 +13,28 @@ public class CategoryService : ICategoryService
         _categoryRepository = categoryRepository;
     }
 
-    public async Task<IEnumerable<CategoryDto>> GetCategories()
+    public async Task<IEnumerable<CategoryDto>> GetAll()
     {
-        var categoriesModel = await _categoryRepository.GetCategories();
-        var categories = categoriesModel.Select(o => o.ModelToDto());
+        var categories = await _categoryRepository.GetAllCategories();
+        return categories;
+    }
+
+    public async Task<IEnumerable<CategoryMinDto>> GetCategories()
+    {
+        var categories = await _categoryRepository.GetCategories();
+        return categories.Select(o => o.DtoToMin());
+    }
+
+    public async Task<IEnumerable<SubcategoryDto>> GetSubCategories()
+    {
+        var categories = await _categoryRepository.GetSubCategories();
         return categories;
     }
 
     public async Task<CategoryDto?> GetCategory(string id)
     {
         var cat = await _categoryRepository.GetCategory(id);
-        return cat?.ModelToDto();
+        return cat;
     }
 
     public async Task<CategoryCreateDto> CreateCategory(CategoryCreateDto category)

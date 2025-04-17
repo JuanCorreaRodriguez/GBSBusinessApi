@@ -17,6 +17,7 @@ public class AppUserController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetAll()
     {
         var usersDto = await _appUserService.GetAllUsers();
@@ -24,6 +25,7 @@ public class AppUserController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize]
     public async Task<IActionResult> GetUser([FromRoute] string id)
     {
         var user = await _appUserService.GetUser(id);
@@ -45,6 +47,7 @@ public class AppUserController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<IActionResult> DeleteUser([FromRoute] string id)
     {
         var userModel = await _appUserService.DeleteUser(id);

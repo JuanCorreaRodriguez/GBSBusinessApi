@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using GlamBeautyApi.Util;
 
 namespace GlamBeautyApi.Entities;
 
@@ -32,7 +33,12 @@ public class Course
 
     public Category Category { get; set; } = null!;
 
-    public List<AppUser> AppUser { get; } = [];
+    public List<AppUser> AppUser { get; set; } = [];
+
+    public string Availability { get; set; } = CourseAvailabilityEnum.ComingSoon.ToString();
+
+    public string Status { get; set; } = CourseStatusEnum.Open.ToString();
+
 
     // public List<UserCourse> UserCourses { get; } = [];
 }

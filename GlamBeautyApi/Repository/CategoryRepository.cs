@@ -16,12 +16,79 @@ public class CategoryRepository : ICategoryRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Category>> GetCategories()
+    public async Task<IEnumerable<CategoryDto>> GetAllCategories()
     {
-        return await _context.Categories.ToListAsync();
+        return await _context.Categories
+            .Where(o => o.ParentId == null)
+            .Select(category => new CategoryDto
+            {
+                Name = category.CategoryName,
+                CategoryId = category.CategoryId,
+                Desc = category.CategoryDesc,
+                Type = category.CategoryType,
+                SubCategories = category.SubCategories.Select(sub => new SubcategoryDto
+                {
+                    Name = sub.CategoryName,
+                    CategoryId = sub.CategoryId,
+                    Desc = sub.CategoryDesc,
+                    Type = sub.CategoryType,
+                    ParentId = sub.ParentId
+                }).ToList()
+            })
+            .ToListAsync();
     }
 
-    public async Task<Category?> GetCategory(string id)
+    public async Task<IEnumerable<CategoryDto>> GetCategories()
+    {
+        return await _context.Categories
+            .Where(o => o.ParentId == null)
+            .Select(category => new CategoryDto
+            {
+                Name = category.CategoryName,
+                CategoryId = category.CategoryId,
+                Desc = category.CategoryDesc,
+                Type = category.CategoryType
+            })
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<SubcategoryDto>> GetSubCategories()
+    {
+        return await _context.Categories
+            .Where(o => o.ParentId != null)
+            .Select(category => new SubcategoryDto
+            {
+                Name = category.CategoryName,
+                CategoryId = category.CategoryId,
+                Desc = category.CategoryDesc,
+                Type = category.CategoryType,
+                ParentId = category.ParentId
+            })
+            .ToListAsync();
+    }
+
+    public async Task<CategoryDto?> GetCategory(string id)
+    {
+        return await _context.Categories
+            .Select(category => new CategoryDto
+            {
+                Name = category.CategoryName,
+                CategoryId = category.CategoryId,
+                Desc = category.CategoryDesc,
+                Type = category.CategoryType,
+                SubCategories = category.SubCategories.Select(sub => new SubcategoryDto
+                {
+                    Name = sub.CategoryName,
+                    CategoryId = sub.CategoryId,
+                    Desc = sub.CategoryDesc,
+                    Type = sub.CategoryType,
+                    ParentId = sub.ParentId
+                }).ToList()
+            })
+            .FirstAsync(o => o.CategoryId.ToString() == id);
+    }
+
+    public async Task<Category?> GetCategoryEntity(string id)
     {
         return await _context.Categories
             .FirstOrDefaultAsync(o => o.CategoryId == Guid.Parse(id))!;
@@ -54,7 +121,7 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task<CategoryUpdateDto?> PutCategory(string id, CategoryUpdateDto dto)
     {
-        var category = await GetCategory(id);
+        var category = await GetCategoryEntity(id);
 
         if (category == null) return null;
 
@@ -68,7 +135,7 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task<string?> DeleteCategory(string id)
     {
-        var category = await GetCategory(id);
+        var category = await GetCategoryEntity(id);
 
         if (category == null) return null;
         _context.Categories.Remove(category);

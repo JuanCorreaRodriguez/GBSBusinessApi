@@ -10,10 +10,31 @@ public static class CategoryMapper
         return new CategoryDto
         {
             CategoryId = model.CategoryId,
-            CategoryName = model.CategoryName,
-            CategoryDesc = model.CategoryDesc,
-            CategoryType = model.CategoryName,
-            ParentId = model.ParentId
+            Name = model.CategoryName,
+            Desc = model.CategoryDesc,
+            Type = model.CategoryName
+        };
+    }
+
+    public static CategoryMinDto DtoToMin(this CategoryDto model)
+    {
+        return new CategoryMinDto
+        {
+            CategoryId = model.CategoryId,
+            Name = model.Name,
+            Desc = model.Desc,
+            Type = model.Type
+        };
+    }
+
+    public static CategoryMinDto ModelToMin(this Category model)
+    {
+        return new CategoryMinDto
+        {
+            CategoryId = model.CategoryId,
+            Name = model.CategoryName,
+            Desc = model.CategoryDesc,
+            Type = model.CategoryType
         };
     }
 
@@ -21,10 +42,10 @@ public static class CategoryMapper
     {
         return new CategoryCreateDto
         {
-            CategoryName = model.CategoryName,
-            CategoryDesc = model.CategoryDesc,
+            Name = model.CategoryName,
+            Desc = model.CategoryDesc,
             CategoryType = model.CategoryName,
-            ParentId = model.ParentId
+            ParentId = model.ParentId!.ToString()
         };
     }
 
@@ -43,10 +64,10 @@ public static class CategoryMapper
     {
         return new Category
         {
-            CategoryDesc = dto.CategoryDesc,
-            CategoryName = dto.CategoryName,
-            ParentId = dto.ParentId,
-            CategoryType = dto.CategoryType
+            CategoryDesc = dto.Desc,
+            CategoryName = dto.Name,
+            // ParentId = dto.ParentId,
+            CategoryType = dto.Type
         };
     }
 
@@ -54,9 +75,9 @@ public static class CategoryMapper
     {
         return new Category
         {
-            CategoryDesc = createDto.CategoryDesc,
-            CategoryName = createDto.CategoryName,
-            ParentId = createDto.ParentId,
+            CategoryDesc = createDto.Desc,
+            CategoryName = createDto.Name,
+            ParentId = new Guid(createDto.ParentId!),
             CategoryType = createDto.CategoryType
         };
     }

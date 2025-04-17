@@ -154,3 +154,4 @@ C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\bin\Debug\net9.0\Microso
 C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GlamBeautyApi.sourcelink.json

@@ -1,6 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GlamBeautyApi.Util;
 
 namespace GlamBeautyApi.Dtos.Course;
+
+public class CourseAppUserIds
+{
+    public string Id { get; set; } = null!;
+}
 
 public class CourseCreateDto
 {
@@ -20,4 +26,10 @@ public class CourseCreateDto
     public decimal Price { get; set; } = decimal.Zero;
 
     public int Capacity { get; set; } = 0;
+
+    public List<CourseAppUserIds>? AppUser { get; set; } = [];
+
+    public string Availability { get; set; } = CourseAvailabilityEnum.ComingSoon.ToString();
+
+    public string Status { get; set; } = CourseStatusEnum.Open.ToString();
 }

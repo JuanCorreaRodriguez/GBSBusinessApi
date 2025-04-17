@@ -1,4 +1,6 @@
-﻿namespace GlamBeautyApi.Dtos.Course;
+﻿using GlamBeautyApi.Util;
+
+namespace GlamBeautyApi.Dtos.Course;
 
 public class CourseUpdateDto
 {
@@ -17,4 +19,10 @@ public class CourseUpdateDto
     public decimal? Price { get; set; }
 
     public int? Capacity { get; set; }
+
+    public List<CourseAppUserIds>? AppUser { get; set; }
+
+    public string? Availability { get; set; } = CourseAvailabilityEnum.ComingSoon.ToString();
+
+    public string? Status { get; set; } = CourseStatusEnum.Open.ToString();
 }

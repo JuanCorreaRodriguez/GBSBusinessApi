@@ -4,8 +4,11 @@ namespace GlamBeautyApi.Interfaces.Category;
 
 public interface ICategoryRepository
 {
-    Task<IEnumerable<Entities.Category>> GetCategories();
-    Task<Entities.Category?> GetCategory(string id);
+    Task<IEnumerable<CategoryDto>> GetAllCategories();
+    Task<IEnumerable<CategoryDto>> GetCategories();
+    Task<IEnumerable<SubcategoryDto>> GetSubCategories();
+    Task<CategoryDto?> GetCategory(string id);
+    Task<Entities.Category?> GetCategoryEntity(string id);
     Task<Entities.Category> PostCategory(CategoryCreateDto category);
     Task<bool> ExistCategoryAsync(string id);
     Task<CategoryUpdateDto?> PutCategory(string id, CategoryUpdateDto category);

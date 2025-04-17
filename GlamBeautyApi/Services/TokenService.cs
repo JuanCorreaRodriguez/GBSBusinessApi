@@ -16,7 +16,7 @@ public class TokenService : ITokenService
     public TokenService(IConfiguration config)
     {
         _config = config;
-        _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:SigninKey"]));
+        _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:SigninKey"]!));
     }
 
     public string CreateToken(AppUser user)

@@ -57,7 +57,8 @@ public class CourseController : ControllerBase
         return CreatedAtAction("CreateCourse", new { name = course.CourseName }, course);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut]
+    [Route("{id}")]
     // [Route("{id}")] <- Alternative
     public async Task<IActionResult> UpdateCourse([FromRoute] string id, [FromBody] CourseUpdateDto dto)
     {

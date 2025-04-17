@@ -43,9 +43,9 @@ public class AccountController : ControllerBase
             return roleResult.Succeeded
                 ? Ok(new AuthNewUser
                 {
-                    email = appUser.Email,
-                    username = appUser.UserName,
-                    token = _tokenService.CreateToken(appUser)
+                    Email = appUser.Email,
+                    Username = appUser.UserName,
+                    Token = _tokenService.CreateToken(appUser)
                 })
                 : StatusCode(500, roleResult.Errors);
         }
@@ -72,9 +72,9 @@ public class AccountController : ControllerBase
         return Ok(
             new AuthNewUser
             {
-                email = user.Email!,
-                username = user.UserName!,
-                token = _tokenService.CreateToken(user)
+                Email = user.Email!,
+                Username = user.UserName!,
+                Token = _tokenService.CreateToken(user)
             }
         );
     }

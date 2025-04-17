@@ -11,8 +11,6 @@ public class AppUserRepository : IAppUserRepository
 {
     private readonly PostgreDbContext _context;
 
-    private int count;
-
     public AppUserRepository(PostgreDbContext context)
     {
         _context = context;
@@ -25,6 +23,7 @@ public class AppUserRepository : IAppUserRepository
             {
                 Id = o.Id,
                 UserName = o.UserName!,
+                UserDesc = o.UserDesc,
                 Email = o.Email!,
                 PhoneNumber = o.PhoneNumber!,
                 CreateAt = o.CreateAt,
@@ -38,6 +37,13 @@ public class AppUserRepository : IAppUserRepository
                 }).ToList()
             })
             .ToListAsync();
+    }
+
+    public async Task<AppUser?> GetUserEntityById(string id)
+    {
+        var user = await _context.AppUsers.FirstAsync(o => o.Id == id);
+
+        return user;
     }
 
     public async Task<AppUserMinDto?> GetUserById(string id)
