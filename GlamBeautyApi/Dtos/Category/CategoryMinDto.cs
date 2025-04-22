@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GlamBeautyApi.Dtos.Media;
 
 namespace GlamBeautyApi.Dtos.Category;
 
@@ -11,4 +12,6 @@ public class CategoryMinDto
     [MaxLength(1000)] public string Desc { get; set; } = string.Empty;
 
     [MaxLength(200)] public string Type { get; set; } = string.Empty;
+
+    public List<MediaMinInnerDto>? Media { get; set; } = [];
 }

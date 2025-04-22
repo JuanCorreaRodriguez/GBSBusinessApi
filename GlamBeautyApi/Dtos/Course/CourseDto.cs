@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GlamBeautyApi.Dtos.AppUser;
 using GlamBeautyApi.Dtos.Category;
+using GlamBeautyApi.Dtos.Media;
 using GlamBeautyApi.Util;
 
 namespace GlamBeautyApi.Dtos.Course;
@@ -43,6 +44,8 @@ public class CourseDto
     public CategoryMinDto Category { get; set; }
 
     public List<AppUserCourseMinDto> AppUsers { get; set; } = [];
+
+    public List<MediaMinInnerDto> Media { get; set; } = [];
 
     public string Availability { get; set; } = CourseAvailabilityEnum.ComingSoon.ToString();
 

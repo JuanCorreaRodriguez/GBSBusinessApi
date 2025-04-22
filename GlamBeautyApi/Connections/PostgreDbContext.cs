@@ -21,6 +21,8 @@ public class PostgreDbContext : IdentityDbContext<AppUser>
 
     public DbSet<UserCourse> UserCourses { get; set; }
     public DbSet<BrandMedia> BrandMedia { get; set; }
+    public DbSet<CategoryMedia> CategoryMedia { get; set; }
+    public DbSet<CourseMedia> CourseMedia { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -80,12 +82,28 @@ public class PostgreDbContext : IdentityDbContext<AppUser>
                 r => r.HasOne<Course>().WithMany().HasForeignKey(e => e.CourseId)
             );
 
+        builder.Entity<Course>()
+            .HasMany(e => e.Media)
+            .WithMany(e => e.Course)
+            .UsingEntity<CourseMedia>(
+                l => l.HasOne<Media>().WithMany().HasForeignKey(e => e.MediaId),
+                r => r.HasOne<Course>().WithMany().HasForeignKey(e => e.CourseId)
+            );
+
         builder.Entity<Brand>()
             .HasMany(e => e.Media)
             .WithMany(e => e.Brand)
             .UsingEntity<BrandMedia>(
                 l => l.HasOne<Media>().WithMany().HasForeignKey(e => e.MediaId),
                 r => r.HasOne<Brand>().WithMany().HasForeignKey(e => e.BrandId)
+            );
+
+        builder.Entity<Category>()
+            .HasMany(e => e.Media)
+            .WithMany(e => e.Category)
+            .UsingEntity<CategoryMedia>(
+                l => l.HasOne<Media>().WithMany().HasForeignKey(e => e.MediaId),
+                r => r.HasOne<Category>().WithMany().HasForeignKey(e => e.CategoryId)
             );
 
         // builder.Entity<UserCourse>()

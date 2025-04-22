@@ -2,10 +2,11 @@
 using GlamBeautyApi.Dtos.AppUser;
 using GlamBeautyApi.Dtos.Category;
 using GlamBeautyApi.Dtos.Course;
+using GlamBeautyApi.Dtos.Media;
 using GlamBeautyApi.Entities;
 using GlamBeautyApi.Interfaces.Course;
 using GlamBeautyApi.Mappers;
-using GlamBeautyApi.Util;
+using GlamBeautyApi.Queries;
 using Microsoft.EntityFrameworkCore;
 
 namespace GlamBeautyApi.Repository;
@@ -35,9 +36,9 @@ public class CourseRepository : ICourseRepository
                 Capacity = course.Capacity,
                 Category = new CategoryMinDto
                 {
-                    Name = course.Category.CategoryName,
+                    Name = course.Category.Name,
                     CategoryId = course.Category.CategoryId,
-                    Desc = course.Category.CategoryDesc
+                    Desc = course.Category.Description
                 },
                 AppUsers = course.AppUser.Select(o => new AppUserCourseMinDto
                 {
@@ -47,6 +48,11 @@ public class CourseRepository : ICourseRepository
                     Ranking = o.Ranking,
                     PhoneNumber = o.PhoneNumber!,
                     UserDesc = o.UserDesc!
+                }).ToList(),
+                Media = course.Media.Select(o => new MediaMinInnerDto
+                {
+                    Metadata = o.Metadata,
+                    Reference = o.Reference
                 }).ToList()
             })
             // .Include(o => o.Category)
@@ -85,9 +91,9 @@ public class CourseRepository : ICourseRepository
                 Capacity = course.Capacity,
                 Category = new CategoryMinDto
                 {
-                    Name = course.Category.CategoryName,
+                    Name = course.Category.Name,
                     CategoryId = course.Category.CategoryId,
-                    Desc = course.Category.CategoryDesc
+                    Desc = course.Category.Description
                 },
                 AppUsers = course.AppUser.Select(o => new AppUserCourseMinDto
                 {
@@ -97,6 +103,11 @@ public class CourseRepository : ICourseRepository
                     Ranking = o.Ranking,
                     PhoneNumber = o.PhoneNumber!,
                     UserDesc = o.UserDesc!
+                }).ToList(),
+                Media = course.Media.Select(o => new MediaMinInnerDto
+                {
+                    Metadata = o.Metadata,
+                    Reference = o.Reference
                 }).ToList()
             })
             .FirstOrDefaultAsync(o => o.CourseId == Guid.Parse(id));
@@ -126,9 +137,10 @@ public class CourseRepository : ICourseRepository
         return c.Entity;
     }
 
-    public async Task<Course?> PutCourseAsync(string id, CourseUpdateDto dto, List<AppUser> appUsers)
+    public async Task<Course?> PutCourseAsync(string id, CourseUpdateDto dto, List<AppUser> appUsers,
+        List<Media> medias)
     {
-        var course = await GetEntityCourseAsync(id);
+        var course = await _context.Courses.FirstOrDefaultAsync(o => o.CourseId == Guid.Parse(id));
         if (course == null) return null;
 
         if (!string.IsNullOrEmpty(dto.CourseName)) course.CourseName = dto.CourseName;
@@ -139,9 +151,16 @@ public class CourseRepository : ICourseRepository
         if (dto.StartAt != null) course.StartAt = (DateTime)dto.StartAt;
         if (dto.EndAt != null) course.EndAt = (DateTime)dto.EndAt;
         if (dto.Category != null) course.CategoryId = (Guid)dto.Category;
+        if (!string.IsNullOrEmpty(dto.Availability)) course.Availability = dto.Availability;
+        if (!string.IsNullOrEmpty(dto.Status)) course.Status = dto.Status;
+
         if (appUsers.Count > 0)
             foreach (var appUser in appUsers)
                 course.AppUser.Add(appUser);
+
+        if (medias.Count > 0)
+            foreach (var media in medias)
+                course.Media.Add(media);
 
         await _context.SaveChangesAsync();
         return course;

@@ -1,5 +1,7 @@
 ﻿using GlamBeautyApi.Dtos.Category;
+using GlamBeautyApi.Entities;
 using GlamBeautyApi.Interfaces.Category;
+using GlamBeautyApi.Interfaces.Media;
 using GlamBeautyApi.Mappers;
 
 namespace GlamBeautyApi.Services;
@@ -7,10 +9,12 @@ namespace GlamBeautyApi.Services;
 public class CategoryService : ICategoryService
 {
     private readonly ICategoryRepository _categoryRepository;
+    private readonly IMediaRepository _mediaRepository;
 
-    public CategoryService(ICategoryRepository categoryRepository)
+    public CategoryService(ICategoryRepository categoryRepository, IMediaRepository mediaRepository)
     {
         _categoryRepository = categoryRepository;
+        _mediaRepository = mediaRepository;
     }
 
     public async Task<IEnumerable<CategoryDto>> GetAll()
@@ -39,13 +43,19 @@ public class CategoryService : ICategoryService
 
     public async Task<CategoryCreateDto> CreateCategory(CategoryCreateDto category)
     {
-        var categoryRes = await _categoryRepository.PostCategory(category);
+        List<Media> media = [];
+        if (category.Media != null) media = await _mediaRepository.GetMediaFromList(category.Media);
+
+        var categoryRes = await _categoryRepository.PostCategory(category.CreateDtoToModel(), media);
         return categoryRes.ModelToCreateDto();
     }
 
     public async Task<CategoryUpdateDto?> UpdateCategory(string id, CategoryUpdateDto category)
     {
-        return await _categoryRepository.PutCategory(id, category)!;
+        List<Media> media = [];
+        if (category.Media != null) media = await _mediaRepository.GetMediaFromList(category.Media);
+
+        return await _categoryRepository.PutCategory(id, category, media)!;
     }
 
     public async Task<string?> DeleteCategory(string id)

@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using GlamBeautyApi.Util;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlamBeautyApi.Entities;
 
 [Table("Courses")]
+[Index(nameof(CourseId), IsUnique = true)]
 public class Course
 {
     [Key] [Column("course_id")] public Guid CourseId { get; set; }
@@ -35,9 +37,13 @@ public class Course
 
     public List<AppUser> AppUser { get; set; } = [];
 
+    public List<Media> Media { get; set; } = [];
+
+    [Column("availability")]
+    [MaxLength(50)]
     public string Availability { get; set; } = CourseAvailabilityEnum.ComingSoon.ToString();
 
-    public string Status { get; set; } = CourseStatusEnum.Open.ToString();
+    [Column("status")] [MaxLength(50)] public string Status { get; set; } = CourseStatusEnum.Open.ToString();
 
 
     // public List<UserCourse> UserCourses { get; } = [];

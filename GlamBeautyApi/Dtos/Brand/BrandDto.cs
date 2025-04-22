@@ -13,5 +13,5 @@ public class BrandDto
 
     [MaxLength(50)] public string Ranking { get; set; } = string.Empty;
 
-    public List<MediaDto> Media { get; set; } = [];
+    public List<MediaDto>? Media { get; set; } = [];
 }

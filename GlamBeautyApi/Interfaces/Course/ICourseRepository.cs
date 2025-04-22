@@ -1,6 +1,6 @@
 ﻿using GlamBeautyApi.Dtos.Course;
 using GlamBeautyApi.Entities;
-using GlamBeautyApi.Util;
+using GlamBeautyApi.Queries;
 
 namespace GlamBeautyApi.Interfaces.Course;
 
@@ -12,6 +12,9 @@ public interface ICourseRepository
     Task<bool> ExistCourseAsync(string id);
     Task<IEnumerable<Entities.Course>?> GetCoursesByUserAsync(string id);
     Task<Entities.Course> PostCourseAsync(string categoryId, CourseCreateDto course, List<AppUser> appUsers);
-    Task<Entities.Course?> PutCourseAsync(string id, CourseUpdateDto dto, List<AppUser> appUsers);
+
+    Task<Entities.Course?> PutCourseAsync(string id, CourseUpdateDto dto, List<AppUser> appUsers,
+        List<Entities.Media> media);
+
     Task<string?> DeleteAsync(string id);
 }

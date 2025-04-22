@@ -1,4 +1,6 @@
-﻿namespace GlamBeautyApi.Dtos.Category;
+﻿using GlamBeautyApi.Dtos.Unions;
+
+namespace GlamBeautyApi.Dtos.Category;
 
 public class CategoryUpdateDto
 {
@@ -9,4 +11,6 @@ public class CategoryUpdateDto
     public Guid? ParentId { get; set; } = Guid.Empty;
 
     public string? CategoryType { get; set; } = string.Empty;
+
+    public List<Ids>? Media { get; set; } = [];
 }

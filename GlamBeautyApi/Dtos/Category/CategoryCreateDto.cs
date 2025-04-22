@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GlamBeautyApi.Dtos.Unions;
 
 namespace GlamBeautyApi.Dtos.Category;
 
@@ -9,11 +10,13 @@ public class CategoryCreateDto
     public required string Name { get; set; }
 
     [Required(ErrorMessage = "Description is required")]
-    public string Desc { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
 
     [MaxLength(50, ErrorMessage = "ParentId cannot be longer than 50 characters.")]
     public string? ParentId { get; set; }
 
     [MaxLength(50, ErrorMessage = "Category type cannot be longer than 50 characters.")]
     public string CategoryType { get; set; } = string.Empty;
+
+    public List<Ids>? Media { get; set; } = [];
 }

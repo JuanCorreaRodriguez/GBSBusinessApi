@@ -1,6 +1,7 @@
 ﻿using GlamBeautyApi.Dtos.Course;
+using GlamBeautyApi.ErrorHandler;
 using GlamBeautyApi.Interfaces.Course;
-using GlamBeautyApi.Util;
+using GlamBeautyApi.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,32 +41,32 @@ public class CourseController : ControllerBase
         return Ok(course);
     }
 
-    [HttpPost("{categoryId}")]
+    [HttpPost("{id}")]
     public async Task<IActionResult> CreateCourse(
-        [FromRoute] string categoryId,
+        [FromRoute] string id,
         [FromBody] CourseCreateDto dto
     )
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var exists = await _courseService.CategoryExists(categoryId);
+        var exists = await _courseService.CategoryExists(id);
 
         if (!exists) return BadRequest("Category does not exist");
 
-        var course = await _courseService.CreateCourse(categoryId, dto);
+        var course = await _courseService.CreateCourse(id, dto);
         return CreatedAtAction("CreateCourse", new { name = course.CourseName }, course);
     }
 
     [HttpPut]
     [Route("{id}")]
-    // [Route("{id}")] <- Alternative
     public async Task<IActionResult> UpdateCourse([FromRoute] string id, [FromBody] CourseUpdateDto dto)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
         var course = await _courseService.UpdateCourse(id, dto);
+
 
         if (course == null) return BadRequest("Course or Category does not exist");
         return Ok(course);
@@ -80,5 +81,16 @@ public class CourseController : ControllerBase
         var res = await _courseService.DeleteAsync(id);
         if (string.IsNullOrEmpty(res)) return NotFound();
         return Ok(res);
+    }
+
+    [HttpGet]
+    [Route("/std/{id}")]
+    public async Task<Result<CourseDto>> GetCourseNew(string id)
+    {
+        if (!ModelState.IsValid)
+            return Result<CourseDto>.Failure(Errors.Errors.DtoError);
+
+        var course = await _courseService.GetCourse(id);
+        return course == null ? Result<CourseDto>.Failure(Errors.Errors.NotFound) : Result<CourseDto>.Success(course!);
     }
 }

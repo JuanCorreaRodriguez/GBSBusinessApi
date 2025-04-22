@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GlamBeautyApi.Entities;
 
+[Table("Categories")]
 [Index(nameof(CategoryId), IsUnique = true)]
 public class Category
 {
@@ -11,15 +12,15 @@ public class Category
 
     [MaxLength(50)]
     [Column("category_name")]
-    public required string CategoryName { get; set; }
+    public required string Name { get; set; }
 
     [MaxLength(250)]
     [Column("category_desc")]
-    public string CategoryDesc { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
 
     [MaxLength(50)]
     [Column("category_type")]
-    public string CategoryType { get; set; } = string.Empty;
+    public string Type { get; set; } = string.Empty;
 
     [Column("parent_id")] public Guid? ParentId { get; set; }
 
@@ -27,5 +28,6 @@ public class Category
 
     public ICollection<Category> SubCategories { get; set; } = [];
 
+    public ICollection<Media> Media { get; set; } = [];
     // public ICollection<Course> Courses { get; set; }
 }

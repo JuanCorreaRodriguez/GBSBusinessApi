@@ -4,10 +4,10 @@ namespace GlamBeautyApi.Interfaces.Brand;
 
 public interface IBrandService
 {
-    Task<IEnumerable<BrandDto>> GetBrands();
-    Task<BrandDto?> GetBrand(string brandId);
-    Task<BrandDto> CreateBrand(BrandCreateDto brand);
-    Task<BrandDto?> UpdateBrand(string id, BrandUpdateDto brand);
+    Task<IEnumerable<BrandMinDto>> GetBrands();
+    Task<BrandMinDto?> GetBrand(string brandId);
+    Task<BrandMinDto> CreateBrand(BrandCreateDto brand);
+    Task<BrandMinDto?> UpdateBrand(string id, BrandUpdateDto brand);
     Task<bool> DeleteBrand(string brandId);
     Task<bool> BrandExists(string brandId);
 }

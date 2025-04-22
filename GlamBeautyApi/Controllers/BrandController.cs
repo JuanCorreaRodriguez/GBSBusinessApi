@@ -27,12 +27,12 @@ public class BrandController : ControllerBase
 
     [HttpGet]
     // [Authorize]
-    [Route("{brandId}")]
-    public async Task<IActionResult> GetBrand([FromRoute] string brandId)
+    [Route("{id}")]
+    public async Task<IActionResult> GetBrand([FromRoute] string id)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        var brand = await _brandService.GetBrand(brandId);
+        var brand = await _brandService.GetBrand(id);
         if (brand == null) return NotFound("Brand not found");
         return Ok(brand);
     }

@@ -1,13 +1,14 @@
 ﻿using GlamBeautyApi.Dtos.Media;
+using GlamBeautyApi.Queries;
 
 namespace GlamBeautyApi.Interfaces.Media;
 
 public interface IMediaService
 {
-    Task<IEnumerable<Entities.Media>> GetMediasAsync();
-    Task<Entities.Media?> GetMediaAsync(string id);
-    Task<Entities.Media> CreateMediaAsync(MediaCreateDto media);
-    Task<Entities.Media?> UpdateMediaAsync(string id, MediaUpdateDto media);
+    Task<List<MediaMinDto>> GetMediasAsync(QueryMedia queryMedia);
+    Task<MediaMinDto?> GetMediaAsync(string id);
+    Task<MediaMinDto> CreateMediaAsync(MediaCreateDto media);
+    Task<MediaMinDto?> UpdateMediaAsync(string id, MediaUpdateDto media);
     Task<bool> ExistsMedia(string id);
     Task<bool> DeleteMediaAsync(string id);
 }

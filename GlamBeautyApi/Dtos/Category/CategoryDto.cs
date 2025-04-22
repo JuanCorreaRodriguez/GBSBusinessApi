@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GlamBeautyApi.Dtos.Media;
 
 namespace GlamBeautyApi.Dtos.Category;
 
@@ -15,4 +16,6 @@ public class CategoryDto
     // [MaxLength(50)] public Guid? ParentId { get; set; } = null!;
 
     public ICollection<SubcategoryDto>? SubCategories { get; set; } = [];
+
+    public List<MediaMinInnerDto>? Media { get; set; } = [];
 }

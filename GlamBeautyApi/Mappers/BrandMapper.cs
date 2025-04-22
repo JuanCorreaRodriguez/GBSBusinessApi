@@ -22,7 +22,7 @@ public static class BrandMapper
         {
             Name = brand.Name,
             Description = brand.Description,
-            Ranking = brand.Ranking
+            Ranking = brand.Ranking!
         };
     }
 
@@ -36,14 +36,15 @@ public static class BrandMapper
         };
     }
 
-    public static BrandDto EntityToDto(this Brand brand)
+    public static BrandMinDto EntityToDto(this Brand brand)
     {
-        return new BrandDto
+        return new BrandMinDto
         {
             BrandId = brand.BrandId,
             Name = brand.Name,
             Description = brand.Description,
-            Ranking = brand.Ranking
+            Ranking = brand.Ranking,
+            Media = brand.Media.Select(o => o.EntityToMinInnerDto()).ToList()
         };
     }
 }

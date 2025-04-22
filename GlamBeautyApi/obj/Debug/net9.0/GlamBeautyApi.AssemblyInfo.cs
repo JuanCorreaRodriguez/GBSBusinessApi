@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GlamBeautyApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e047673ea5ee8c02b4a142238d6f9960b6bf120c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d57347d7753efc91b83005f35ec70e93e804f56")]
 [assembly: System.Reflection.AssemblyProductAttribute("GlamBeautyApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GlamBeautyApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

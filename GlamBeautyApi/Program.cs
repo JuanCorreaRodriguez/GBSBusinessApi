@@ -7,6 +7,7 @@ using GlamBeautyApi.Interfaces.Category;
 using GlamBeautyApi.Interfaces.Course;
 using GlamBeautyApi.Interfaces.Media;
 using GlamBeautyApi.Interfaces.User;
+using GlamBeautyApi.Middleware;
 using GlamBeautyApi.Repository;
 using GlamBeautyApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -128,6 +129,10 @@ builder.Services.AddDbContext<PostgreDbContext>(options =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// Handler Exception
+// builder.Services.AddExceptionHandler<GlobalHandler>();
+// builder.Services.AddProblemDetails();
+
 var app = builder.Build();
 
 app.UseSwagger();
@@ -141,10 +146,15 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
         options.RoutePrefix = string.Empty;
         options.DocExpansion(DocExpansion.None);
+        options.DisplayRequestDuration();
     });
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+// app.UseExceptionHandler();
 
 app.UseAuthentication();
 

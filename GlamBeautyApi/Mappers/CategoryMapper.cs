@@ -10,9 +10,9 @@ public static class CategoryMapper
         return new CategoryDto
         {
             CategoryId = model.CategoryId,
-            Name = model.CategoryName,
-            Desc = model.CategoryDesc,
-            Type = model.CategoryName
+            Name = model.Name,
+            Desc = model.Description,
+            Type = model.Name
         };
     }
 
@@ -23,7 +23,8 @@ public static class CategoryMapper
             CategoryId = model.CategoryId,
             Name = model.Name,
             Desc = model.Desc,
-            Type = model.Type
+            Type = model.Type,
+            Media = model.Media
         };
     }
 
@@ -32,9 +33,9 @@ public static class CategoryMapper
         return new CategoryMinDto
         {
             CategoryId = model.CategoryId,
-            Name = model.CategoryName,
-            Desc = model.CategoryDesc,
-            Type = model.CategoryType
+            Name = model.Name,
+            Desc = model.Description,
+            Type = model.Type
         };
     }
 
@@ -42,9 +43,9 @@ public static class CategoryMapper
     {
         return new CategoryCreateDto
         {
-            Name = model.CategoryName,
-            Desc = model.CategoryDesc,
-            CategoryType = model.CategoryName,
+            Name = model.Name,
+            Description = model.Description,
+            CategoryType = model.Name,
             ParentId = model.ParentId!.ToString()
         };
     }
@@ -53,9 +54,9 @@ public static class CategoryMapper
     {
         return new CategoryUpdateDto
         {
-            CategoryName = model.CategoryName,
-            CategoryDesc = model.CategoryDesc,
-            CategoryType = model.CategoryName,
+            CategoryName = model.Name,
+            CategoryDesc = model.Description,
+            CategoryType = model.Name,
             ParentId = model.ParentId
         };
     }
@@ -64,10 +65,10 @@ public static class CategoryMapper
     {
         return new Category
         {
-            CategoryDesc = dto.Desc,
-            CategoryName = dto.Name,
+            Description = dto.Desc,
+            Name = dto.Name,
             // ParentId = dto.ParentId,
-            CategoryType = dto.Type
+            Type = dto.Type
         };
     }
 
@@ -75,10 +76,10 @@ public static class CategoryMapper
     {
         return new Category
         {
-            CategoryDesc = createDto.Desc,
-            CategoryName = createDto.Name,
-            ParentId = new Guid(createDto.ParentId!),
-            CategoryType = createDto.CategoryType
+            Description = createDto.Description,
+            Name = createDto.Name,
+            ParentId = createDto.ParentId != null ? new Guid(createDto.ParentId!) : null,
+            Type = createDto.CategoryType
         };
     }
 }

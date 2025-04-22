@@ -1,5 +1,7 @@
 ﻿using GlamBeautyApi.Dtos.Brand;
+using GlamBeautyApi.Entities;
 using GlamBeautyApi.Interfaces.Brand;
+using GlamBeautyApi.Interfaces.Media;
 using GlamBeautyApi.Mappers;
 
 namespace GlamBeautyApi.Services;
@@ -7,34 +9,46 @@ namespace GlamBeautyApi.Services;
 public class BrandService : IBrandService
 {
     private readonly IBrandRepository _brandRepository;
+    private readonly IMediaRepository _mediaRepository;
 
-    public BrandService(IBrandRepository brandRepository)
+    public BrandService(IBrandRepository brandRepository, IMediaRepository mediaRepository)
     {
         _brandRepository = brandRepository;
+        _mediaRepository = mediaRepository;
     }
 
-    public async Task<IEnumerable<BrandDto>> GetBrands()
+    public async Task<IEnumerable<BrandMinDto>> GetBrands()
     {
-        var brandsEntity = await _brandRepository.GetBrands();
-        var brands = brandsEntity.Select(o => o.EntityToDto());
+        var brands = await _brandRepository.GetBrands();
         return brands;
     }
 
-    public async Task<BrandDto?> GetBrand(string brandId)
+    public async Task<BrandMinDto?> GetBrand(string brandId)
     {
         var brand = await _brandRepository.GetBrand(brandId);
-        return brand?.EntityToDto();
+        return brand;
     }
 
-    public async Task<BrandDto> CreateBrand(BrandCreateDto brand)
+    public async Task<BrandMinDto> CreateBrand(BrandCreateDto brand)
     {
-        var result = await _brandRepository.PostBrand(brand.CreateDtoToEntity());
+        List<Media> media = [];
+
+        if (brand.Media != null) media = await _mediaRepository.GetMediaFromList(brand.Media!);
+
+        var result = await _brandRepository.PostBrand(brand.CreateDtoToEntity(), media);
         return result.EntityToDto();
     }
 
-    public async Task<BrandDto?> UpdateBrand(string id, BrandUpdateDto brand)
+    public async Task<BrandMinDto?> UpdateBrand(string id, BrandUpdateDto brand)
     {
-        var result = await _brandRepository.PutBrand(id, brand.UpdateDtoToEntity());
+        List<Media> mediaList = [];
+        if (brand.Media != null)
+        {
+            var mediasId = brand.Media;
+            mediaList = await _mediaRepository.GetMediaFromList(mediasId);
+        }
+
+        var result = await _brandRepository.PutBrand(id, brand, mediaList);
         return result?.EntityToDto();
     }
 

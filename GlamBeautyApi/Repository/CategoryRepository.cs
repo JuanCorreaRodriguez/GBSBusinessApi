@@ -1,5 +1,6 @@
 ﻿using GlamBeautyApi.Connections;
 using GlamBeautyApi.Dtos.Category;
+using GlamBeautyApi.Dtos.Media;
 using GlamBeautyApi.Entities;
 using GlamBeautyApi.Interfaces.Category;
 using GlamBeautyApi.Mappers;
@@ -22,17 +23,22 @@ public class CategoryRepository : ICategoryRepository
             .Where(o => o.ParentId == null)
             .Select(category => new CategoryDto
             {
-                Name = category.CategoryName,
+                Name = category.Name,
                 CategoryId = category.CategoryId,
-                Desc = category.CategoryDesc,
-                Type = category.CategoryType,
+                Desc = category.Description,
+                Type = category.Type,
                 SubCategories = category.SubCategories.Select(sub => new SubcategoryDto
                 {
-                    Name = sub.CategoryName,
+                    Name = sub.Name,
                     CategoryId = sub.CategoryId,
-                    Desc = sub.CategoryDesc,
-                    Type = sub.CategoryType,
+                    Desc = sub.Description,
+                    Type = sub.Type,
                     ParentId = sub.ParentId
+                }).ToList(),
+                Media = category.Media.Select(o => new MediaMinInnerDto
+                {
+                    Metadata = o.Metadata,
+                    Reference = o.Reference
                 }).ToList()
             })
             .ToListAsync();
@@ -44,10 +50,15 @@ public class CategoryRepository : ICategoryRepository
             .Where(o => o.ParentId == null)
             .Select(category => new CategoryDto
             {
-                Name = category.CategoryName,
+                Name = category.Name,
                 CategoryId = category.CategoryId,
-                Desc = category.CategoryDesc,
-                Type = category.CategoryType
+                Desc = category.Description,
+                Type = category.Type,
+                Media = category.Media.Select(o => new MediaMinInnerDto
+                {
+                    Metadata = o.Metadata,
+                    Reference = o.Reference
+                }).ToList()
             })
             .ToListAsync();
     }
@@ -58,11 +69,16 @@ public class CategoryRepository : ICategoryRepository
             .Where(o => o.ParentId != null)
             .Select(category => new SubcategoryDto
             {
-                Name = category.CategoryName,
+                Name = category.Name,
                 CategoryId = category.CategoryId,
-                Desc = category.CategoryDesc,
-                Type = category.CategoryType,
-                ParentId = category.ParentId
+                Desc = category.Description,
+                Type = category.Type,
+                ParentId = category.ParentId,
+                Media = category.Media.Select(o => new MediaMinInnerDto
+                {
+                    Metadata = o.Metadata,
+                    Reference = o.Reference
+                }).ToList()
             })
             .ToListAsync();
     }
@@ -72,17 +88,22 @@ public class CategoryRepository : ICategoryRepository
         return await _context.Categories
             .Select(category => new CategoryDto
             {
-                Name = category.CategoryName,
+                Name = category.Name,
                 CategoryId = category.CategoryId,
-                Desc = category.CategoryDesc,
-                Type = category.CategoryType,
+                Desc = category.Description,
+                Type = category.Type,
                 SubCategories = category.SubCategories.Select(sub => new SubcategoryDto
                 {
-                    Name = sub.CategoryName,
+                    Name = sub.Name,
                     CategoryId = sub.CategoryId,
-                    Desc = sub.CategoryDesc,
-                    Type = sub.CategoryType,
+                    Desc = sub.Description,
+                    Type = sub.Type,
                     ParentId = sub.ParentId
+                }).ToList(),
+                Media = category.Media.Select(o => new MediaMinInnerDto
+                {
+                    Metadata = o.Metadata,
+                    Reference = o.Reference
                 }).ToList()
             })
             .FirstAsync(o => o.CategoryId.ToString() == id);
@@ -94,22 +115,14 @@ public class CategoryRepository : ICategoryRepository
             .FirstOrDefaultAsync(o => o.CategoryId == Guid.Parse(id))!;
     }
 
-    public async Task<Category> PostCategory(CategoryCreateDto category)
+    public async Task<Category> PostCategory(Category category, List<Media> media)
     {
-        // try
-        // {
-        //
-        // }
-        // catch (Exception e)
-        // {
-        //     Console.WriteLine(e);
-        //     throw;
-        // }
-        var cat = category.CreateDtoToModel();
-        Console.WriteLine("*** POSTING ***");
-        Console.WriteLine(cat.CategoryName);
-        Console.WriteLine(cat.CategoryType);
-        var categoryRes = await _context.Categories.AddAsync(category.CreateDtoToModel());
+        var categoryRes = await _context.Categories.AddAsync(category);
+
+        if (media.Count > 0)
+            foreach (var obj in media)
+                categoryRes.Entity.Media.Add(obj);
+
         await _context.SaveChangesAsync();
         return categoryRes.Entity;
     }
@@ -119,15 +132,19 @@ public class CategoryRepository : ICategoryRepository
         return _context.Categories.AnyAsync(o => o.CategoryId.ToString() == id);
     }
 
-    public async Task<CategoryUpdateDto?> PutCategory(string id, CategoryUpdateDto dto)
+    public async Task<CategoryUpdateDto?> PutCategory(string id, CategoryUpdateDto dto, List<Media> media)
     {
         var category = await GetCategoryEntity(id);
 
         if (category == null) return null;
 
-        if (!string.IsNullOrEmpty(dto.CategoryName)) category.CategoryName = dto.CategoryName;
-        if (!string.IsNullOrEmpty(dto.CategoryDesc)) category.CategoryDesc = dto.CategoryDesc;
-        if (!string.IsNullOrEmpty(dto.CategoryType)) category.CategoryType = dto.CategoryType;
+        if (!string.IsNullOrEmpty(dto.CategoryName)) category.Name = dto.CategoryName;
+        if (!string.IsNullOrEmpty(dto.CategoryDesc)) category.Description = dto.CategoryDesc;
+        if (!string.IsNullOrEmpty(dto.CategoryType)) category.Type = dto.CategoryType;
+
+        if (media.Count > 0)
+            foreach (var obj in media)
+                category.Media.Add(obj);
 
         await _context.SaveChangesAsync();
         return category.ModelToUpdateDto();

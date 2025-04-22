@@ -1,10 +1,12 @@
-﻿using GlamBeautyApi.Dtos.Course;
+﻿using System.Text.Json;
+using GlamBeautyApi.Dtos.Course;
 using GlamBeautyApi.Entities;
 using GlamBeautyApi.Interfaces.Category;
 using GlamBeautyApi.Interfaces.Course;
+using GlamBeautyApi.Interfaces.Media;
 using GlamBeautyApi.Interfaces.User;
 using GlamBeautyApi.Mappers;
-using GlamBeautyApi.Util;
+using GlamBeautyApi.Queries;
 
 namespace GlamBeautyApi.Services;
 
@@ -13,16 +15,19 @@ public class CourseService : ICourseService
     private readonly IAppUserRepository _appUserRepository;
     private readonly ICategoryRepository _categoryRepository;
     private readonly ICourseRepository _courseRepository;
+    private readonly IMediaRepository _mediaRepository;
 
     public CourseService(
         ICourseRepository courseRepository,
         ICategoryRepository categoryRepository,
-        IAppUserRepository appUserRepository
+        IAppUserRepository appUserRepository,
+        IMediaRepository mediaRepository
     )
     {
         _courseRepository = courseRepository;
         _categoryRepository = categoryRepository;
         _appUserRepository = appUserRepository;
+        _mediaRepository = mediaRepository;
     }
 
     public async Task<CourseDto?> GetCourse(string id)
@@ -71,14 +76,17 @@ public class CourseService : ICourseService
         }
 
         List<AppUser> appUsers = [];
+        List<Media> media = [];
 
         if (course.AppUser != null)
-        {
-            var userIds = course.AppUser;
-            appUsers = await GetUsersFromList(userIds);
-        }
+            appUsers = await GetUsersFromList(course.AppUser);
 
-        var courseUpdated = await _courseRepository.PutCourseAsync(id, course, appUsers);
+        if (course.Media != null)
+            media = await _mediaRepository.GetMediaFromList(course.Media);
+
+        Console.WriteLine($"{JsonSerializer.Serialize(course.Media)}");
+        Console.WriteLine($"{JsonSerializer.Serialize(media)}");
+        var courseUpdated = await _courseRepository.PutCourseAsync(id, course, appUsers, media);
         return courseUpdated?.ModelToDto();
     }
 

@@ -5,7 +5,7 @@ namespace GlamBeautyApi.Dtos.Media;
 
 public class MediaUpdateDto
 {
-    [MaxLength(50)] public Guid MediaId { get; set; }
+    [MaxLength(50)] public string Name { get; set; }
 
     [MaxLength(500)] public string? Reference { get; set; } = string.Empty;
 

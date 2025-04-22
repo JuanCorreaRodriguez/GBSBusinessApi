@@ -1,6 +1,6 @@
 ﻿using GlamBeautyApi.Dtos.Course;
 using GlamBeautyApi.Entities;
-using GlamBeautyApi.Util;
+using GlamBeautyApi.Queries;
 
 namespace GlamBeautyApi.Interfaces.Course;
 

@@ -1,4 +1,4 @@
-﻿namespace GlamBeautyApi.Util;
+﻿namespace GlamBeautyApi.Queries;
 
 public class QueryCourse
 {
@@ -7,5 +7,5 @@ public class QueryCourse
     public string? SortBy { get; set; } = null;
     public bool IsDescending { get; set; }
     public int PageNumber { get; set; } = 1;
-    public int PageSize { get; set; } = 2;
+    public int PageSize { get; set; } = 5;
 }

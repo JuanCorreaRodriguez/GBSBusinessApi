@@ -9,8 +9,8 @@ public interface ICategoryRepository
     Task<IEnumerable<SubcategoryDto>> GetSubCategories();
     Task<CategoryDto?> GetCategory(string id);
     Task<Entities.Category?> GetCategoryEntity(string id);
-    Task<Entities.Category> PostCategory(CategoryCreateDto category);
+    Task<Entities.Category> PostCategory(Entities.Category category, List<Entities.Media> media);
     Task<bool> ExistCategoryAsync(string id);
-    Task<CategoryUpdateDto?> PutCategory(string id, CategoryUpdateDto category);
+    Task<CategoryUpdateDto?> PutCategory(string id, CategoryUpdateDto category, List<Entities.Media> media);
     Task<string?> DeleteCategory(string id);
 }

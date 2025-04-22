@@ -1,7 +1,7 @@
 ﻿using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Entities;
 using GlamBeautyApi.Interfaces.Media;
 using GlamBeautyApi.Mappers;
+using GlamBeautyApi.Queries;
 
 namespace GlamBeautyApi.Services;
 
@@ -14,24 +14,26 @@ public class MediaService : IMediaService
         _mediaRepository = mediaRepository;
     }
 
-    public async Task<IEnumerable<Media>> GetMediasAsync()
+    public async Task<List<MediaMinDto>> GetMediasAsync(QueryMedia queryMedia)
     {
-        return await _mediaRepository.GetMediasAsync();
+        return await _mediaRepository.GetMediasAsync(queryMedia);
     }
 
-    public async Task<Media?> GetMediaAsync(string id)
+    public async Task<MediaMinDto?> GetMediaAsync(string id)
     {
         return await _mediaRepository.GetMediaByIdAsync(id);
     }
 
-    public async Task<Media> CreateMediaAsync(MediaCreateDto media)
+    public async Task<MediaMinDto> CreateMediaAsync(MediaCreateDto media)
     {
-        return await _mediaRepository.PostMediaAsync(media.CreateToEntity());
+        var mediaRes = await _mediaRepository.PostMediaAsync(media.CreateToEntity());
+        return mediaRes.EntityToMinDto();
     }
 
-    public async Task<Media?> UpdateMediaAsync(string id, MediaUpdateDto media)
+    public async Task<MediaMinDto?> UpdateMediaAsync(string id, MediaUpdateDto media)
     {
-        return await _mediaRepository.PutMediaAsync(media.UpdateToEntity());
+        var mediaRes = await _mediaRepository.PutMediaAsync(id, media);
+        return mediaRes.EntityToMinDto();
     }
 
     public async Task<bool> ExistsMedia(string id)

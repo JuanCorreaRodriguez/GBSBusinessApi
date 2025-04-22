@@ -9,6 +9,7 @@ public static class MediaMapper
     {
         return new Media
         {
+            Name = dto.Name,
             Metadata = dto.Metadata,
             Reference = dto.Reference,
             MediaId = dto.MediaId
@@ -19,6 +20,7 @@ public static class MediaMapper
     {
         return new Media
         {
+            Name = dto.Name,
             Metadata = dto.Metadata!,
             Reference = dto.Reference
         };
@@ -28,9 +30,9 @@ public static class MediaMapper
     {
         return new Media
         {
+            Name = dto.Name,
             Metadata = dto.Metadata!,
-            Reference = dto.Reference!,
-            MediaId = dto.MediaId
+            Reference = dto.Reference!
         };
     }
 
@@ -38,9 +40,30 @@ public static class MediaMapper
     {
         return new MediaDto
         {
+            Name = entity.Name,
             Metadata = entity.Metadata,
             Reference = entity.Reference,
             MediaId = entity.MediaId
+        };
+    }
+
+    public static MediaMinInnerDto EntityToMinInnerDto(this Media entity)
+    {
+        return new MediaMinInnerDto
+        {
+            Name = entity.Name,
+            Metadata = entity.Metadata,
+            Reference = entity.Reference
+        };
+    }
+
+    public static MediaMinDto EntityToMinDto(this Media entity)
+    {
+        return new MediaMinDto
+        {
+            Name = entity.Name,
+            Metadata = entity.Metadata,
+            Reference = entity.Reference
         };
     }
 }

@@ -11,7 +11,7 @@ public class Brand
     [Column("name")] [MaxLength(50)] public string Name { get; set; } = string.Empty;
 
     [Column("description")]
-    [MaxLength(500)]
+    [MaxLength(1000)]
     public string Description { get; set; } = string.Empty;
 
     [Column("ranking")] [MaxLength(50)] public string Ranking { get; set; } = string.Empty;
