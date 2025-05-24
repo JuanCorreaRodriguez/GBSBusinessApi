@@ -1,9 +1,9 @@
-﻿using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Interfaces.Media;
-using GlamBeautyApi.Mappers;
-using GlamBeautyApi.Queries;
+﻿using GBSApi.Dtos.Media;
+using GBSApi.Interfaces.Media;
+using GBSApi.Mappers;
+using GBSApi.Queries;
 
-namespace GlamBeautyApi.Services;
+namespace GBSApi.Services;
 
 public class MediaService : IMediaService
 {

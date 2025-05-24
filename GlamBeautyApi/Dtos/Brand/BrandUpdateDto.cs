@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using GlamBeautyApi.Dtos.Unions;
+using GBSApi.Dtos.Unions;
 
-namespace GlamBeautyApi.Dtos.Brand;
+namespace GBSApi.Dtos.Brand;
 
 public class BrandUpdateDto
 {

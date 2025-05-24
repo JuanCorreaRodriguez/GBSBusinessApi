@@ -1,11 +1,11 @@
-﻿using GlamBeautyApi.Connections;
-using GlamBeautyApi.Dtos.Brand;
-using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Brand;
+﻿using GBSApi.Connections;
+using GBSApi.Dtos.Brand;
+using GBSApi.Dtos.Media;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Brand;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Repository;
+namespace GBSApi.Repository;
 
 public class BrandRepository : IBrandRepository
 {

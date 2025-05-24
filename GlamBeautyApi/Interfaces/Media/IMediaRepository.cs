@@ -1,8 +1,8 @@
-﻿using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Dtos.Unions;
-using GlamBeautyApi.Queries;
+﻿using GBSApi.Dtos.Media;
+using GBSApi.Dtos.Unions;
+using GBSApi.Queries;
 
-namespace GlamBeautyApi.Interfaces.Media;
+namespace GBSApi.Interfaces.Media;
 
 public interface IMediaRepository
 {

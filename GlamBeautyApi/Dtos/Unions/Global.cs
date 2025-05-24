@@ -1,4 +1,4 @@
-﻿namespace GlamBeautyApi.Dtos.Unions;
+﻿namespace GBSApi.Dtos.Unions;
 
 public class Global
 {

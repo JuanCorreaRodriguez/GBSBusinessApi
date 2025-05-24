@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GlamBeautyApi.Infrastructure;
+namespace GBSApi.Infrastructure;
 
 public class GlobalHandler : IExceptionHandler
 {

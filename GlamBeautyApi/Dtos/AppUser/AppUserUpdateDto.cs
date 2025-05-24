@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using GlamBeautyApi.Dtos.Course;
+using GBSApi.Dtos.Course;
 
-namespace GlamBeautyApi.Dtos.AppUser;
+namespace GBSApi.Dtos.AppUser;
 
 public class AppUserUpdateDto
 {

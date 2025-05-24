@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZK3HcJA24j8=",
+  "dgSpecHash": "XKUbmJofyk0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jose-\\source\\repos\\GlamBeautyApi\\GlamBeautyApi\\GlamBeautyApi.csproj",
+  "projectFilePath": "C:\\Users\\jose-\\source\\repos\\GlamBeautyApi\\GlamBeautyApi\\GBSApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jose-\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\jose-\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

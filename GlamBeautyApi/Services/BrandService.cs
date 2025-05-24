@@ -1,10 +1,10 @@
-﻿using GlamBeautyApi.Dtos.Brand;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Brand;
-using GlamBeautyApi.Interfaces.Media;
-using GlamBeautyApi.Mappers;
+﻿using GBSApi.Dtos.Brand;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Brand;
+using GBSApi.Interfaces.Media;
+using GBSApi.Mappers;
 
-namespace GlamBeautyApi.Services;
+namespace GBSApi.Services;
 
 public class BrandService : IBrandService
 {

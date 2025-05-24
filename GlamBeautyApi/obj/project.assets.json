@@ -4502,9 +4502,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jose-\\source\\repos\\GlamBeautyApi\\GlamBeautyApi\\GlamBeautyApi.csproj",
-      "projectName": "GlamBeautyApi",
-      "projectPath": "C:\\Users\\jose-\\source\\repos\\GlamBeautyApi\\GlamBeautyApi\\GlamBeautyApi.csproj",
+      "projectUniqueName": "C:\\Users\\jose-\\source\\repos\\GlamBeautyApi\\GlamBeautyApi\\GBSApi.csproj",
+      "projectName": "GBSApi",
+      "projectPath": "C:\\Users\\jose-\\source\\repos\\GlamBeautyApi\\GlamBeautyApi\\GBSApi.csproj",
       "packagesPath": "C:\\Users\\jose-\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jose-\\source\\repos\\GlamBeautyApi\\GlamBeautyApi\\obj\\",
       "projectStyle": "PackageReference",
@@ -4539,7 +4539,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -4609,7 +4609,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

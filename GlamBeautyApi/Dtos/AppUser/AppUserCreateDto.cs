@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace GlamBeautyApi.Dtos.User;
+namespace GBSApi.Dtos.AppUser;
 
 public class AppUserCreateDto : IdentityUser
 {

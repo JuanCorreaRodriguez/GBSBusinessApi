@@ -1,11 +1,11 @@
-﻿using GlamBeautyApi.Dtos.Account;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Auth;
+﻿using GBSApi.Dtos.Account;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Controllers;
+namespace GBSApi.Controllers;
 
 [Route("api/account")]
 [ApiController]

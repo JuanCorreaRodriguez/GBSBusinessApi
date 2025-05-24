@@ -1,4 +1,4 @@
-﻿namespace GlamBeautyApi.Dtos.Account;
+﻿namespace GBSApi.Dtos.Account;
 
 public class AuthNewUser
 {

@@ -1,11 +1,11 @@
-﻿using GlamBeautyApi.Dtos.Course;
-using GlamBeautyApi.ErrorHandler;
-using GlamBeautyApi.Interfaces.Course;
-using GlamBeautyApi.Queries;
+﻿using GBSApi.Dtos.Course;
+using GBSApi.ErrorHandler;
+using GBSApi.Interfaces.Course;
+using GBSApi.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GlamBeautyApi.Controllers;
+namespace GBSApi.Controllers;
 
 [Route("api/courses")]
 [ApiController]
@@ -88,9 +88,9 @@ public class CourseController : ControllerBase
     public async Task<Result<CourseDto>> GetCourseNew(string id)
     {
         if (!ModelState.IsValid)
-            return Result<CourseDto>.Failure(Errors.Errors.DtoError);
+            return Result<CourseDto>.Failure(Errors);
 
         var course = await _courseService.GetCourse(id);
-        return course == null ? Result<CourseDto>.Failure(Errors.Errors.NotFound) : Result<CourseDto>.Success(course!);
+        return course == null ? Result<CourseDto>.Failure(Errors.NotFound) : Result<CourseDto>.Success(course!);
     }
 }

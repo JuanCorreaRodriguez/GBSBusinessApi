@@ -1,4 +1,4 @@
-﻿namespace GlamBeautyApi.Entities
+﻿namespace GBSApi.Entities
 {
     public class PromoModel
     {

@@ -1,8 +1,8 @@
-﻿using GlamBeautyApi.Dtos.Course;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Queries;
+﻿using GBSApi.Dtos.Course;
+using GBSApi.Entities;
+using GBSApi.Queries;
 
-namespace GlamBeautyApi.Interfaces.Course;
+namespace GBSApi.Interfaces.Course;
 
 public interface ICourseService
 {

@@ -1,7 +1,7 @@
-﻿using GlamBeautyApi.Dtos.Course;
+﻿using GBSApi.Dtos.Course;
 using Microsoft.AspNetCore.Identity;
 
-namespace GlamBeautyApi.Dtos.AppUser;
+namespace GBSApi.Dtos.AppUser;
 
 public class AppUserDto : IdentityUser
 {

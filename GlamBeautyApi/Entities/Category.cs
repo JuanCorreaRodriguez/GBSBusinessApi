@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Entities;
+namespace GBSApi.Entities;
 
 [Table("Categories")]
 [Index(nameof(CategoryId), IsUnique = true)]

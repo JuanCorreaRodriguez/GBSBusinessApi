@@ -1,15 +1,15 @@
-﻿using GlamBeautyApi.Connections;
-using GlamBeautyApi.Dtos.AppUser;
-using GlamBeautyApi.Dtos.Category;
-using GlamBeautyApi.Dtos.Course;
-using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Course;
-using GlamBeautyApi.Mappers;
-using GlamBeautyApi.Queries;
+﻿using GBSApi.Connections;
+using GBSApi.Dtos.AppUser;
+using GBSApi.Dtos.Category;
+using GBSApi.Dtos.Course;
+using GBSApi.Dtos.Media;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Course;
+using GBSApi.Mappers;
+using GBSApi.Queries;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Repository;
+namespace GBSApi.Repository;
 
 public class CourseRepository : ICourseRepository
 {

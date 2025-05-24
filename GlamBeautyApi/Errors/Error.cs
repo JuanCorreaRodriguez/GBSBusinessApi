@@ -1,6 +1,6 @@
-﻿using GlamBeautyApi.ErrorHandler;
+﻿using GBSApi.ErrorHandler;
 
-namespace GlamBeautyApi.Errors;
+namespace GBSApi.Errors;
 
 public sealed record Error(string Code, int Status)
 {

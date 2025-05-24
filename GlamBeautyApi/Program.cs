@@ -1,15 +1,14 @@
-using System.Text;
-using GlamBeautyApi.Connections;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Auth;
-using GlamBeautyApi.Interfaces.Brand;
-using GlamBeautyApi.Interfaces.Category;
-using GlamBeautyApi.Interfaces.Course;
-using GlamBeautyApi.Interfaces.Media;
-using GlamBeautyApi.Interfaces.User;
-using GlamBeautyApi.Middleware;
-using GlamBeautyApi.Repository;
-using GlamBeautyApi.Services;
+using GBSApi.Connections;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Auth;
+using GBSApi.Interfaces.Brand;
+using GBSApi.Interfaces.Category;
+using GBSApi.Interfaces.Course;
+using GBSApi.Interfaces.Media;
+using GBSApi.Interfaces.User;
+using GBSApi.Middleware;
+using GBSApi.Repository;
+using GBSApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

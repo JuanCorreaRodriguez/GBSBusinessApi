@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using GlamBeautyApi.Dtos.Brand;
+using GBSApi.Dtos.Brand;
 
-namespace GlamBeautyApi.Dtos.Media;
+namespace GBSApi.Dtos.Media;
 
 public class MediaDto
 {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Util;
+using GBSApi.Dtos.Media;
+using GBSApi.Util;
 
-namespace GlamBeautyApi.Dtos.Course;
+namespace GBSApi.Dtos.Course;
 
 public class CourseMinDto
 {

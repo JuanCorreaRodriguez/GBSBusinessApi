@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using GlamBeautyApi.Dtos.AppUser;
-using GlamBeautyApi.Dtos.Category;
-using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Util;
+using GBSApi.Dtos.AppUser;
+using GBSApi.Dtos.Category;
+using GBSApi.Dtos.Media;
+using GBSApi.Util;
 
-namespace GlamBeautyApi.Dtos.Course;
+namespace GBSApi.Dtos.Course;
 
 public class CourseDto
 {

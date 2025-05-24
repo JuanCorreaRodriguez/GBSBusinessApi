@@ -1,4 +1,4 @@
-﻿namespace GlamBeautyApi.ErrorHandler;
+﻿namespace GBSApi.ErrorHandler;
 
 public static class ResultExtensions
 {

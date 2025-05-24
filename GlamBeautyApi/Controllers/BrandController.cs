@@ -1,9 +1,9 @@
-﻿using GlamBeautyApi.Dtos.Brand;
-using GlamBeautyApi.Interfaces.Brand;
+﻿using GBSApi.Dtos.Brand;
+using GBSApi.Interfaces.Brand;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GlamBeautyApi.Controllers;
+namespace GBSApi.Controllers;
 
 [Route("api/brand")]
 [ApiController]

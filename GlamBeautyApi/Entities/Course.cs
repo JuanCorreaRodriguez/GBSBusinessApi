@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using GlamBeautyApi.Util;
+using GBSApi.Util;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Entities;
+namespace GBSApi.Entities;
 
 [Table("Courses")]
 [Index(nameof(CourseId), IsUnique = true)]

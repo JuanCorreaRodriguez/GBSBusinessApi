@@ -1,10 +1,10 @@
-﻿using GlamBeautyApi.Dtos.Category;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Category;
-using GlamBeautyApi.Interfaces.Media;
-using GlamBeautyApi.Mappers;
+﻿using GBSApi.Dtos.Category;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Category;
+using GBSApi.Interfaces.Media;
+using GBSApi.Mappers;
 
-namespace GlamBeautyApi.Services;
+namespace GBSApi.Services;
 
 public class CategoryService : ICategoryService
 {

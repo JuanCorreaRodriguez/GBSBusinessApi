@@ -1,4 +1,4 @@
-﻿namespace GlamBeautyApi.Util;
+﻿namespace GBSApi.Util;
 
 public enum IdentityRoles
 {

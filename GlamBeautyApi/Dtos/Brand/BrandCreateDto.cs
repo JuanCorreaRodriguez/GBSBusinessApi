@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using GlamBeautyApi.Dtos.Unions;
+using GBSApi.Dtos.Unions;
 
-namespace GlamBeautyApi.Dtos.Brand;
+namespace GBSApi.Dtos.Brand;
 
 public class BrandCreateDto
 {
     [Required(ErrorMessage = "Please enter a brand name")]
     [MaxLength(50)]
+
     public string Name { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Please enter a brand description")]

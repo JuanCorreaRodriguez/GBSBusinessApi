@@ -1,7 +1,7 @@
-﻿using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Entities;
+﻿using GBSApi.Dtos.Media;
+using GBSApi.Entities;
 
-namespace GlamBeautyApi.Mappers;
+namespace GBSApi.Mappers;
 
 public static class MediaMapper
 {

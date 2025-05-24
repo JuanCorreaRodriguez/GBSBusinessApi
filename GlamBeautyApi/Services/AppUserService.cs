@@ -1,9 +1,9 @@
-﻿using GlamBeautyApi.Dtos.AppUser;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.User;
-using GlamBeautyApi.Mappers;
+﻿using GBSApi.Dtos.AppUser;
+using GBSApi.Entities;
+using GBSApi.Interfaces.User;
+using GBSApi.Mappers;
 
-namespace GlamBeautyApi.Services;
+namespace GBSApi.Services;
 
 public class AppUserService : IAppUserService
 {

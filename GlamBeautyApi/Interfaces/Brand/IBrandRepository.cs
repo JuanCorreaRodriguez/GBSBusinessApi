@@ -1,6 +1,6 @@
-﻿using GlamBeautyApi.Dtos.Brand;
+﻿using GBSApi.Dtos.Brand;
 
-namespace GlamBeautyApi.Interfaces.Brand;
+namespace GBSApi.Interfaces.Brand;
 
 public interface IBrandRepository
 {

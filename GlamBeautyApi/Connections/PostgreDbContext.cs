@@ -1,9 +1,9 @@
-﻿using GlamBeautyApi.Entities;
+﻿using GBSApi.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Connections;
+namespace GBSApi.Connections;
 
 public class PostgreDbContext : IdentityDbContext<AppUser>
 {

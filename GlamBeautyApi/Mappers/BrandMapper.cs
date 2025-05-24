@@ -1,7 +1,7 @@
-﻿using GlamBeautyApi.Dtos.Brand;
-using GlamBeautyApi.Entities;
+﻿using GBSApi.Dtos.Brand;
+using GBSApi.Entities;
 
-namespace GlamBeautyApi.Mappers;
+namespace GBSApi.Mappers;
 
 public static class BrandMapper
 {

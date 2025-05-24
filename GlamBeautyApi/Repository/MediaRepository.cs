@@ -1,14 +1,14 @@
-﻿using GlamBeautyApi.Connections;
-using GlamBeautyApi.Dtos.Brand;
-using GlamBeautyApi.Dtos.Category;
-using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Dtos.Unions;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Media;
-using GlamBeautyApi.Queries;
+﻿using GBSApi.Connections;
+using GBSApi.Dtos.Brand;
+using GBSApi.Dtos.Category;
+using GBSApi.Dtos.Media;
+using GBSApi.Dtos.Unions;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Media;
+using GBSApi.Queries;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Repository;
+namespace GBSApi.Repository;
 
 public class MediaRepository : IMediaRepository
 {

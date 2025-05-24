@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GlamBeautyApi.Entities;
+namespace GBSApi.Entities;
 
 [Table("Brands")]
 public class Brand

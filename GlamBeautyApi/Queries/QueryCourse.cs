@@ -1,4 +1,4 @@
-﻿namespace GlamBeautyApi.Queries;
+﻿namespace GBSApi.Queries;
 
 public class QueryCourse
 {

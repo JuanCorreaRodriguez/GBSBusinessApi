@@ -1,12 +1,12 @@
-﻿using GlamBeautyApi.Connections;
-using GlamBeautyApi.Dtos.Category;
-using GlamBeautyApi.Dtos.Media;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Category;
-using GlamBeautyApi.Mappers;
+﻿using GBSApi.Connections;
+using GBSApi.Dtos.Category;
+using GBSApi.Dtos.Media;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Category;
+using GBSApi.Mappers;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Repository;
+namespace GBSApi.Repository;
 
 public class CategoryRepository : ICategoryRepository
 {

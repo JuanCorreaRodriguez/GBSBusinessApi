@@ -1,9 +1,8 @@
-﻿using GlamBeautyApi.Dtos.AppUser;
-using GlamBeautyApi.Dtos.Course;
-using GlamBeautyApi.Dtos.User;
-using GlamBeautyApi.Entities;
+﻿using GBSApi.Dtos.AppUser;
+using GBSApi.Dtos.Course;
+using GBSApi.Entities;
 
-namespace GlamBeautyApi.Mappers;
+namespace GBSApi.Mappers;
 
 public static class AppUserMapper
 {

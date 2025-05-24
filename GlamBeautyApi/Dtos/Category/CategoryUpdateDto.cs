@@ -1,6 +1,6 @@
-﻿using GlamBeautyApi.Dtos.Unions;
+﻿using GBSApi.Dtos.Unions;
 
-namespace GlamBeautyApi.Dtos.Category;
+namespace GBSApi.Dtos.Category;
 
 public class CategoryUpdateDto
 {

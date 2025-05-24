@@ -1,7 +1,5 @@
-﻿using GlamBeautyApi.Dtos.AppUser;
-using GlamBeautyApi.Dtos.User;
-
-namespace GlamBeautyApi.Interfaces.User;
+﻿using GBSApi.Dtos.AppUser;
+namespace GBSApi.Interfaces.User;
 
 public interface IAppUserService
 {

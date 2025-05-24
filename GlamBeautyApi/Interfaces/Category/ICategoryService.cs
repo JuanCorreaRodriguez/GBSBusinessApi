@@ -1,6 +1,6 @@
-﻿using GlamBeautyApi.Dtos.Category;
+﻿using GBSApi.Dtos.Category;
 
-namespace GlamBeautyApi.Interfaces.Category;
+namespace GBSApi.Interfaces.Category;
 
 public interface ICategoryService
 {

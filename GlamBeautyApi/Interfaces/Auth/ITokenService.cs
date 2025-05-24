@@ -1,6 +1,6 @@
-﻿using GlamBeautyApi.Entities;
+﻿using GBSApi.Entities;
 
-namespace GlamBeautyApi.Interfaces.Auth;
+namespace GBSApi.Interfaces.Auth;
 
 public interface ITokenService
 {

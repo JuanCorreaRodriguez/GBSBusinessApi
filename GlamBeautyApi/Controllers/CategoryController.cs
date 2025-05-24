@@ -1,9 +1,9 @@
-﻿using GlamBeautyApi.Dtos.Category;
-using GlamBeautyApi.Interfaces.Category;
+﻿using GBSApi.Dtos.Category;
+using GBSApi.Interfaces.Category;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GlamBeautyApi.Controllers;
+namespace GBSApi.Controllers;
 
 [Route("api/category")]
 [ApiController]

@@ -1,12 +1,12 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Auth;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Auth;
 using Microsoft.IdentityModel.Tokens;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
-namespace GlamBeautyApi.Services;
+namespace GBSApi.Services;
 
 public class TokenService : ITokenService
 {

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Entities;
+namespace GBSApi.Entities;
 
 [Table("AspNetUsers")]
 [Index(nameof(Id), IsUnique = true)]

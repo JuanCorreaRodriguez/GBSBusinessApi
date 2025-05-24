@@ -1,11 +1,11 @@
-﻿using GlamBeautyApi.Connections;
-using GlamBeautyApi.Dtos.AppUser;
-using GlamBeautyApi.Dtos.Course;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.User;
+﻿using GBSApi.Connections;
+using GBSApi.Dtos.AppUser;
+using GBSApi.Dtos.Course;
+using GBSApi.Entities;
+using GBSApi.Interfaces.User;
 using Microsoft.EntityFrameworkCore;
 
-namespace GlamBeautyApi.Repository;
+namespace GBSApi.Repository;
 
 public class AppUserRepository : IAppUserRepository
 {

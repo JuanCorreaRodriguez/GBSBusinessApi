@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GlamBeautyApi.Dtos.Media;
+namespace GBSApi.Dtos.Media;
 
 public class MediaCreateDto
 {

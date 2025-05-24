@@ -1,7 +1,7 @@
-﻿using GlamBeautyApi.Dtos.AppUser;
-using GlamBeautyApi.Entities;
+﻿using GBSApi.Dtos.AppUser;
+using GBSApi.Entities;
 
-namespace GlamBeautyApi.Interfaces.User;
+namespace GBSApi.Interfaces.User;
 
 public interface IAppUserRepository
 {

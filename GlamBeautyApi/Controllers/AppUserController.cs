@@ -1,9 +1,9 @@
-﻿using GlamBeautyApi.Dtos.AppUser;
-using GlamBeautyApi.Interfaces.User;
+﻿using GBSApi.Dtos.AppUser;
+using GBSApi.Interfaces.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GlamBeautyApi.Controllers;
+namespace GBSApi.Controllers;
 
 [Route("api/users")]
 [ApiController]

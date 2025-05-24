@@ -1,14 +1,14 @@
 ﻿using System.Text.Json;
-using GlamBeautyApi.Dtos.Course;
-using GlamBeautyApi.Entities;
-using GlamBeautyApi.Interfaces.Category;
-using GlamBeautyApi.Interfaces.Course;
-using GlamBeautyApi.Interfaces.Media;
-using GlamBeautyApi.Interfaces.User;
-using GlamBeautyApi.Mappers;
-using GlamBeautyApi.Queries;
+using GBSApi.Dtos.Course;
+using GBSApi.Entities;
+using GBSApi.Interfaces.Category;
+using GBSApi.Interfaces.Course;
+using GBSApi.Interfaces.Media;
+using GBSApi.Interfaces.User;
+using GBSApi.Mappers;
+using GBSApi.Queries;
 
-namespace GlamBeautyApi.Services;
+namespace GBSApi.Services;
 
 public class CourseService : ICourseService
 {

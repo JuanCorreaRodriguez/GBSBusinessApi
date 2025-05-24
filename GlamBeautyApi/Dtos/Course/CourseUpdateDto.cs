@@ -1,7 +1,7 @@
-﻿using GlamBeautyApi.Dtos.Unions;
-using GlamBeautyApi.Util;
+﻿using GBSApi.Dtos.Unions;
+using GBSApi.Util;
 
-namespace GlamBeautyApi.Dtos.Course;
+namespace GBSApi.Dtos.Course;
 
 public class CourseUpdateDto
 {

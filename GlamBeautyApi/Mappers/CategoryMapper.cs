@@ -1,7 +1,7 @@
-﻿using GlamBeautyApi.Dtos.Category;
-using GlamBeautyApi.Entities;
+﻿using GBSApi.Dtos.Category;
+using GBSApi.Entities;
 
-namespace GlamBeautyApi.Mappers;
+namespace GBSApi.Mappers;
 
 public static class CategoryMapper
 {

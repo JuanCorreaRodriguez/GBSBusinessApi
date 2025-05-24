@@ -1,6 +1,6 @@
-﻿using GlamBeautyApi.Errors;
+﻿using GBSApi.Errors;
 
-namespace GlamBeautyApi.ErrorHandler;
+namespace GBSApi.ErrorHandler;
 
 public class Result<T>
 {
