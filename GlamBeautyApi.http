@@ -1,0 +1,6 @@
+@GlamBeautyApi_HostAddress = http://localhost:5147
+
+GET {{GlamBeautyApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
