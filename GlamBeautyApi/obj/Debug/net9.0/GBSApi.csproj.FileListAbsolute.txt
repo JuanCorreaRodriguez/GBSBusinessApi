@@ -1,0 +1,8 @@
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GBSApi.csproj.AssemblyReference.cache
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GBSApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GBSApi.AssemblyInfoInputs.cache
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GBSApi.AssemblyInfo.cs
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GBSApi.csproj.CoreCompileInputs.cache
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GBSApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GBSApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jose-\source\repos\GlamBeautyApi\GlamBeautyApi\obj\Debug\net9.0\GBSApi.sourcelink.json

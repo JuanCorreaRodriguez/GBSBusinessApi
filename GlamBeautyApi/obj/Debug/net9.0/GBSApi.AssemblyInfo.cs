@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GBSApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a23a287bc515a5d390a0273414b1a6aa576ececf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab65c70e940a1a8a15699ba514cbd0b5ef9ba3ec")]
 [assembly: System.Reflection.AssemblyProductAttribute("GBSApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GBSApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
